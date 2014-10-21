@@ -104,11 +104,12 @@ module.exports = function($){
                     doc.selection.empty();
                     try {
                         options.onsuccess.call(this, imgs);
-                        $preview.css({
-                            filter: 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)',
-                            width: width,
-                            height: height
-                        }).get(0).filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+                        // $preview.css({
+                        //     filter: 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)',
+                        //     width: width,
+                        //     height: height
+                        // }).get(0).filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+                        $preview[0].style.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod="scale", src="' + src + '");';
                         hasProcess = 1;
                     } catch (e) {
                         options.onsuccess.call(this, imgs);
